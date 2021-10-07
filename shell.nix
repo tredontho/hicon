@@ -11,6 +11,6 @@ in
       hlint
       ormolu
       zlib
-      haskellPackages.ghcide
+      haskellPackages.haskell-language-server
     ];
   }

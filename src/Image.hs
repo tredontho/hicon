@@ -2,7 +2,7 @@
 {-# LANGUAGE GADTs #-}
 {-# LANGUAGE StandaloneDeriving #-}
 
-module Image (Image (..), Pixel (..), blackCircle) where
+module Image (Image (..), Pixel (..), blackCircle, blackSquare) where
 
 import Data.Word (Word8)
 
@@ -27,6 +27,19 @@ data Pixel a where
 deriving instance Eq a => Eq (Pixel a)
 
 deriving instance Show a => Show (Pixel a)
+
+
+blackSquare :: Word -> Image BW
+blackSquare len = Image
+  { imgWidth = 2 * len
+  , imgHeight = 2 * len
+  , imgPixels = drawBlackSquare len
+  }
+
+drawBlackSquare :: Word -> [Pixel BW]
+drawBlackSquare len = map (\coord -> let (y, x) = quotRem coord (2 * len) in if insideSquare x y len then BW 0 else BW 255) [0..(2 * len) ^ 2 - 1]
+  where
+    insideSquare x y middle = abs (fromEnum x - fromEnum middle) <= fromEnum (middle `div` 2) && abs (fromEnum y - fromEnum middle) <= fromEnum (middle `div` 2)
 
 blackCircle :: Word -> Image BW
 blackCircle radius =

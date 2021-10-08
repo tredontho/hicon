@@ -1,8 +1,9 @@
 module Main where
 
-import qualified MyLib (someFunc)
+import PPM
+import Image
 
 main :: IO ()
 main = do
-  putStrLn "Hello, Haskell!"
-  MyLib.someFunc
+  writePPM "out/circle.ppm" $ PPM.createPPM $ blackCircle 500
+  writePPM "out/square.ppm" $ PPM.createPPM $ blackSquare 500

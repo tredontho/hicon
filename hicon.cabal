@@ -30,7 +30,7 @@ library
 
 executable hicon
   main-is:             Main.hs
-  other-modules:       MyLib
+  -- other-modules:
   -- other-extensions:
   build-depends:       base ^>=4.14, hicon
   hs-source-dirs:      app

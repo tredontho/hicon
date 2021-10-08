@@ -40,4 +40,4 @@ drawBlackCircle :: Word -> [Pixel BW]
 drawBlackCircle radius =
   map
     (\coord -> let (y, x) = quotRem coord (2 * radius) in if (fromEnum x - fromEnum radius) ^ 2 + (fromEnum y - fromEnum radius) ^ 2 > fromEnum radius ^ 2 then BW 255 else BW 0)
-    [0 .. (2 * radius) ^ 2]
+    [0 .. (2 * radius) ^ 2 - 1]

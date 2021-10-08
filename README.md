@@ -1,1 +1,1 @@
-Going to try generating some sort of icon from an image.  Will probably start with edge detection, then some sort of "coloring in".  We'll see what happens
+So actually I'm dumb and I'd rather spend a lot of time working with basic stuff like writing a simple file format from scratch, so... who knows where this will go.  Currently you can kind of write a PGM file, have fun.

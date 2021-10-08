@@ -58,9 +58,9 @@ extractColors (RGB r g b) = [r, g, b]
 extractColors (RGBA r g b _) = [r, g, b]
 
 makeBody :: Image a -> ByteString
-makeBody Image {imgHeight, imgWidth, imgPixels} = BS8.concat rows
+makeBody Image {imgHeight, imgWidth, imgPixels} = rows
   where
-    rows = map (BS.concat . map toPPMPixel) $ splitEvery (fromEnum imgWidth) imgPixels
+    rows = BS.concat $ map toPPMPixel imgPixels
 
 toPPMPixel :: Pixel a -> ByteString
 toPPMPixel (BW w) =

@@ -12,6 +12,9 @@ data RGB deriving (Show, Eq)
 
 data RGBA deriving (Show, Eq)
 
+-- | An image is a collection of pixel values, with (0,0) in the upper left,
+-- with y-valus increasing with each row. The @a@ parameter is used to
+-- determine the type of pixels present
 data Image a = Image
   { imgWidth :: Word,
     imgHeight :: Word,

@@ -9,7 +9,6 @@ import qualified Data.ByteString.Lazy as BS
 import qualified Data.ByteString.Lazy.Char8 as BS8
 import Data.Word (Word8)
 import Image
-import Util (splitEvery)
 
 data PPM = PPM
   { ppmHeader :: ByteString,
@@ -58,7 +57,7 @@ extractColors (RGB r g b) = [r, g, b]
 extractColors (RGBA r g b _) = [r, g, b]
 
 makeBody :: Image a -> ByteString
-makeBody Image {imgHeight, imgWidth, imgPixels} = rows
+makeBody Image {imgPixels} = rows
   where
     rows = BS.concat $ map toPPMPixel imgPixels
 
@@ -69,6 +68,6 @@ toPPMPixel (BW w) =
 toPPMPixel (RGB r g b) =
   Builder.toLazyByteString $
     Builder.word8 r <> Builder.word8 g <> Builder.word8 b
-toPPMPixel (RGBA r g b a) =
+toPPMPixel (RGBA r g b _) =
   Builder.toLazyByteString $
     Builder.word8 r <> Builder.word8 g <> Builder.word8 b

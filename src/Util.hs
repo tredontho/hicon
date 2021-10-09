@@ -1,5 +1,4 @@
 module Util where
-import GHC.Arr (accum)
 
 splitEvery :: Int -> [a] -> [[a]]
 splitEvery 0 xs = [xs]

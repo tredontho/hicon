@@ -32,7 +32,7 @@ writePPM filePath PPM {ppmHeader, ppmBody} =
   BS.writeFile
     filePath
     ( Builder.toLazyByteString $
-        Builder.lazyByteString ppmHeader <> Builder.lazyByteString ppmBody
+        Builder.lazyByteString ppmHeader <> Builder.charUtf8 '\n' <> Builder.lazyByteString ppmBody
     )
 
 makeHeader :: Image a -> ByteString
